@@ -1,0 +1,42 @@
+﻿@model TALLERPOON.Models.dbModels.Detallepp
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Detallepp</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomProd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomProd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantProd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantProd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProdNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProdNavigation.IdProd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProvNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProvNavigation.IdProv)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdDetallepp">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

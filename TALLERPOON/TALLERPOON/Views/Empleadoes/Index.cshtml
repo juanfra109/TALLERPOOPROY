@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TALLERPOON.Models.dbModels.Empleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomEmpl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelEmp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RfcEmpl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DirEmpl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TurnEmplNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomEmpl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelEmp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RfcEmpl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DirEmpl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TurnEmplNavigation.IdTurn)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdEmpl">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdEmpl">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdEmpl">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

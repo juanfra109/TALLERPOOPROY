@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TALLERPOON.Models.dbModels.Detalleap>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAlmNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDetalleapNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAlmNavigation.IdAlm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDetalleapNavigation.IdProd)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDetalleap">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDetalleap">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDetalleap">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

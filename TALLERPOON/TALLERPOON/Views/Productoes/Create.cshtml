@@ -1,0 +1,48 @@
+﻿@model TALLERPOON.Models.dbModels.Producto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Producto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomProd" class="control-label"></label>
+                <input asp-for="NomProd" class="form-control" />
+                <span asp-validation-for="NomProd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecProd" class="control-label"></label>
+                <input asp-for="PrecProd" class="form-control" />
+                <span asp-validation-for="PrecProd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CantProd" class="control-label"></label>
+                <input asp-for="CantProd" class="form-control" />
+                <span asp-validation-for="CantProd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imagen" class="control-label"></label>
+                <input asp-for="Imagen" class="form-control" />
+                <span asp-validation-for="Imagen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

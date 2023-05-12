@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TALLERPOON.Models.dbModels.Ventum>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechVent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalVent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmplNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechVent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalVent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmplNavigation.IdEmpl)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdVent">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdVent">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdVent">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
