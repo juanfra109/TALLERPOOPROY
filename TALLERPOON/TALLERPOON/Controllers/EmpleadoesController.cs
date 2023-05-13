@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
+using TALLERPOON.Dto;
 
 namespace TALLERPOON.Controllers
 {
@@ -56,16 +57,24 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEmpl,NomEmpl,TelEmp,RfcEmpl,DirEmpl,TurnEmpl,Correo")] Empleado empleado)
+        public async Task<IActionResult> Create(EmpleadoCreate Empleado)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(empleado);
+                Empleado empleadonu = new Empleado();
+                empleadonu.IdEmpl = Empleado.IdEmpl;
+                empleadonu.NomEmpl = Empleado.NomEmpl;  
+                empleadonu.TelEmp = Empleado.TelEmp;
+                empleadonu.RfcEmpl = Empleado.RfcEmpl;
+                empleadonu.DirEmpl = Empleado.DirEmpl;
+                empleadonu.TurnEmpl = Empleado.TurnEmpl;
+                empleadonu.Correo= Empleado.Correo;
+                _context.Add(empleadonu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TurnEmpl"] = new SelectList(_context.Turnos, "IdTurn", "IdTurn", empleado.TurnEmpl);
-            return View(empleado);
+            ViewData["TurnEmpl"] = new SelectList(_context.Turnos, "IdTurn", "IdTurn", Empleado.TurnEmpl);
+            return View(Empleado);
         }
 
         // GET: Empleadoes/Edit/5
@@ -90,23 +99,28 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEmpl,NomEmpl,TelEmp,RfcEmpl,DirEmpl,TurnEmpl,Correo")] Empleado empleado)
+        public async Task<IActionResult> Edit(EmpleadoUpdateDto Empleado)
         {
-            if (id != empleado.IdEmpl)
-            {
-                return NotFound();
-            }
+            
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(empleado);
+                    Empleado empleadoup = new Empleado();
+                    empleadoup.IdEmpl = Empleado.IdEmpl;
+                    empleadoup.NomEmpl = Empleado.NomEmpl;
+                    empleadoup.TelEmp = Empleado.TelEmp;
+                    empleadoup.RfcEmpl = Empleado.RfcEmpl;
+                    empleadoup.DirEmpl = Empleado.DirEmpl;
+                    empleadoup.TurnEmpl = Empleado.TurnEmpl;
+                    empleadoup.Correo = Empleado.Correo;
+                    _context.Update(empleadoup);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmpleadoExists(empleado.IdEmpl))
+                    if (!EmpleadoExists(Empleado.IdEmpl))
                     {
                         return NotFound();
                     }
@@ -117,8 +131,8 @@ namespace TALLERPOON.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TurnEmpl"] = new SelectList(_context.Turnos, "IdTurn", "IdTurn", empleado.TurnEmpl);
-            return View(empleado);
+            ViewData["TurnEmpl"] = new SelectList(_context.Turnos, "IdTurn", "IdTurn", Empleado.TurnEmpl);
+            return View(Empleado);
         }
 
         // GET: Empleadoes/Delete/5
