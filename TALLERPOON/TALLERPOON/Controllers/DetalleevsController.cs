@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
+using TALLERPOON.Dto;
+
 
 namespace TALLERPOON.Controllers
 {
@@ -58,17 +60,22 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdDetalleEp,IdEmpl,IdProv,FechDetalleEp")] Detalleev detalleev)
+        public async Task<IActionResult> Create(DetalleEVCreate DetalleEV)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(detalleev);
+                Detalleev detalleevnu = new Detalleev();
+                detalleevnu.IdDetalleEp = DetalleEV.IdDetalleEp;
+                detalleevnu.IdEmpl = DetalleEV.IdEmpl;
+                detalleevnu.FechDetalleEp = DetalleEV.FechDetalleEp;
+                detalleevnu.IdProv=DetalleEV.IdProv;
+                _context.Add(detalleevnu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", detalleev.IdEmpl);
-            ViewData["IdProv"] = new SelectList(_context.Proveedors, "IdProv", "IdProv", detalleev.IdProv);
-            return View(detalleev);
+            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", DetalleEV.IdEmpl);
+            ViewData["IdProv"] = new SelectList(_context.Proveedors, "IdProv", "IdProv", DetalleEV.IdProv);
+            return View(DetalleEV);
         }
 
         // GET: Detalleevs/Edit/5
@@ -94,23 +101,25 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdDetalleEp,IdEmpl,IdProv,FechDetalleEp")] Detalleev detalleev)
+        public async Task<IActionResult> Edit(DetalleEVUpdate DetalleEV)
         {
-            if (id != detalleev.IdDetalleEp)
-            {
-                return NotFound();
-            }
+            
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(detalleev);
+                    Detalleev detalleevup = new Detalleev();
+                    detalleevup.IdDetalleEp = DetalleEV.IdDetalleEp;
+                    detalleevup.IdEmpl = DetalleEV.IdEmpl;
+                    detalleevup.IdProv = DetalleEV.IdProv;
+                    detalleevup.FechDetalleEp = DetalleEV.FechDetalleEp;
+                    _context.Update(detalleevup);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DetalleevExists(detalleev.IdDetalleEp))
+                    if (!DetalleevExists(DetalleEV.IdDetalleEp))
                     {
                         return NotFound();
                     }
@@ -121,9 +130,9 @@ namespace TALLERPOON.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", detalleev.IdEmpl);
-            ViewData["IdProv"] = new SelectList(_context.Proveedors, "IdProv", "IdProv", detalleev.IdProv);
-            return View(detalleev);
+            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", DetalleEV.IdEmpl);
+            ViewData["IdProv"] = new SelectList(_context.Proveedors, "IdProv", "IdProv", DetalleEV.IdProv);
+            return View(DetalleEV);
         }
 
         // GET: Detalleevs/Delete/5

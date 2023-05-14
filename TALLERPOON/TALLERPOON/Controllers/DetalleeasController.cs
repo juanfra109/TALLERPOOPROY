@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
+using TALLERPOON.Dto;
+
 
 namespace TALLERPOON.Controllers
 {
@@ -58,17 +60,22 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdDetalleEa,IdEmpl,IdAlm,FechaDetalleEa")] Detalleea detalleea)
+        public async Task<IActionResult> Create(DetalleEACreate DetalleEA)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(detalleea);
+                Detalleea detalleeanu = new Detalleea();
+                detalleeanu.IdDetalleEa = DetalleEA.IdDetalleEa;
+                detalleeanu.IdEmpl = DetalleEA.IdEmpl;
+                detalleeanu.FechaDetalleEa = DetalleEA.FechaDetalleEa;
+                detalleeanu.IdAlm = DetalleEA.IdAlm;
+                _context.Add(detalleeanu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAlm"] = new SelectList(_context.Almacens, "IdAlm", "IdAlm", detalleea.IdAlm);
-            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", detalleea.IdEmpl);
-            return View(detalleea);
+            ViewData["IdAlm"] = new SelectList(_context.Almacens, "IdAlm", "IdAlm", DetalleEA.IdAlm);
+            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", DetalleEA.IdEmpl);
+            return View(DetalleEA);
         }
 
         // GET: Detalleeas/Edit/5
@@ -94,23 +101,25 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdDetalleEa,IdEmpl,IdAlm,FechaDetalleEa")] Detalleea detalleea)
+        public async Task<IActionResult> Edit(DetalleEAUpdate DetalleEA)
         {
-            if (id != detalleea.IdDetalleEa)
-            {
-                return NotFound();
-            }
+            
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(detalleea);
+                    Detalleea detalleeaup = new Detalleea();
+                    detalleeaup.IdDetalleEa = DetalleEA.IdDetalleEa;
+                    detalleeaup.FechaDetalleEa = DetalleEA.FechaDetalleEa;
+                    detalleeaup.IdEmpl =DetalleEA.IdEmpl;
+                    detalleeaup.IdAlm =DetalleEA.IdAlm;
+                    _context.Update(detalleeaup);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DetalleeaExists(detalleea.IdDetalleEa))
+                    if (!DetalleeaExists(DetalleEA.IdDetalleEa))
                     {
                         return NotFound();
                     }
@@ -121,9 +130,9 @@ namespace TALLERPOON.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAlm"] = new SelectList(_context.Almacens, "IdAlm", "IdAlm", detalleea.IdAlm);
-            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", detalleea.IdEmpl);
-            return View(detalleea);
+            ViewData["IdAlm"] = new SelectList(_context.Almacens, "IdAlm", "IdAlm", DetalleEA.IdAlm);
+            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", DetalleEA.IdEmpl);
+            return View(DetalleEA);
         }
 
         // GET: Detalleeas/Delete/5

@@ -11,11 +11,7 @@ namespace TALLERPOON.Dto
     public class DetalleAPCreate
     {
         public int IdDetalleap { get; set; }
-
-        [Column("id_prod")]
         public int IdProd { get; set; }
-
-        [Column("Id_alm")]
         public int IdAlm { get; set; }
     }
 }

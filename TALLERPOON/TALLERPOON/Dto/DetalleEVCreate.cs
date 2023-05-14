@@ -13,5 +13,6 @@ namespace TALLERPOON.Dto
         public int IdDetalleEp { get; set; }
         public int IdEmpl { get; set; }
         public int IdProv { get; set; }
+        public DateTime FechDetalleEp { get; set; }
     }
 }

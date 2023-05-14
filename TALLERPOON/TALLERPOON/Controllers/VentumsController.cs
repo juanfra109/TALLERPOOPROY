@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
+using TALLERPOON.Dto;
+
 
 namespace TALLERPOON.Controllers
 {
@@ -56,16 +58,21 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdVent,FechVent,TotalVent,IdEmpl")] Ventum ventum)
+        public async Task<IActionResult> Create(VentaCreate Venta)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ventum);
+                Ventum ventanu = new Ventum();
+                ventanu.IdVent = Venta.IdVent;
+                ventanu.TotalVent = Venta.TotalVent;
+                ventanu.FechVent = Venta.FechVent;
+                ventanu.IdEmpl = Venta.IdEmpl;
+                _context.Add(ventanu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", ventum.IdEmpl);
-            return View(ventum);
+            ViewData["IdEmpl"] = new SelectList(_context.Empleados, "IdEmpl", "IdEmpl", Venta.IdEmpl);
+            return View(Venta);
         }
 
         // GET: Ventums/Edit/5

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
+using TALLERPOON.Dto;
+
 
 namespace TALLERPOON.Controllers
 {
@@ -58,17 +60,21 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdDetalleap,IdProd,IdAlm")] Detalleap detalleap)
+        public async Task<IActionResult> Create(DetalleAPCreate DetalleAP)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(detalleap);
+                Detalleap detalleapu = new Detalleap();
+                detalleapu.IdDetalleap = DetalleAP.IdDetalleap;
+                detalleapu.IdAlm = DetalleAP.IdAlm;
+                detalleapu.IdProd = DetalleAP.IdProd;
+                _context.Add(detalleapu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAlm"] = new SelectList(_context.Almacens, "IdAlm", "IdAlm", detalleap.IdAlm);
-            ViewData["IdDetalleap"] = new SelectList(_context.Productos, "IdProd", "IdProd", detalleap.IdDetalleap);
-            return View(detalleap);
+            ViewData["IdAlm"] = new SelectList(_context.Almacens, "IdAlm", "IdAlm", DetalleAP.IdAlm);
+            ViewData["IdDetalleap"] = new SelectList(_context.Productos, "IdProd", "IdProd", DetalleAP.IdDetalleap);
+            return View(DetalleAP);
         }
 
         // GET: Detalleaps/Edit/5
@@ -94,23 +100,24 @@ namespace TALLERPOON.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdDetalleap,IdProd,IdAlm")] Detalleap detalleap)
+        public async Task<IActionResult> Edit(DetalleAPUpdate DetalleAP)
         {
-            if (id != detalleap.IdDetalleap)
-            {
-                return NotFound();
-            }
+        
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(detalleap);
+                    Detalleap detalleapu = new Detalleap();
+                    detalleapu.IdDetalleap = DetalleAP.IdDetalleap;
+                    detalleapu.IdAlm = DetalleAP.IdAlm;
+                    detalleapu.IdProd = DetalleAP.IdProd;
+                    _context.Update(detalleapu);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DetalleapExists(detalleap.IdDetalleap))
+                    if (!DetalleapExists(DetalleAP.IdDetalleap))
                     {
                         return NotFound();
                     }
@@ -121,9 +128,9 @@ namespace TALLERPOON.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAlm"] = new SelectList(_context.Almacens, "IdAlm", "IdAlm", detalleap.IdAlm);
-            ViewData["IdDetalleap"] = new SelectList(_context.Productos, "IdProd", "IdProd", detalleap.IdDetalleap);
-            return View(detalleap);
+            ViewData["IdAlm"] = new SelectList(_context.Almacens, "IdAlm", "IdAlm", DetalleAP.IdAlm);
+            ViewData["IdDetalleap"] = new SelectList(_context.Productos, "IdProd", "IdProd", DetalleAP.IdDetalleap);
+            return View(DetalleAP);
         }
 
         // GET: Detalleaps/Delete/5
