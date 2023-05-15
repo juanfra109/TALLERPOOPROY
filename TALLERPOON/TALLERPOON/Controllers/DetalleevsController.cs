@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
 using TALLERPOON.Dto;
+using System.Globalization;
+
 
 
 namespace TALLERPOON.Controllers
@@ -67,7 +69,7 @@ namespace TALLERPOON.Controllers
                 Detalleev detalleevnu = new Detalleev();
                 detalleevnu.IdDetalleEp = DetalleEV.IdDetalleEp;
                 detalleevnu.IdEmpl = DetalleEV.IdEmpl;
-                detalleevnu.FechDetalleEp = DetalleEV.FechDetalleEp;
+                detalleevnu.FechDetalleEp = DateTime.Now;
                 detalleevnu.IdProv=DetalleEV.IdProv;
                 _context.Add(detalleevnu);
                 await _context.SaveChangesAsync();

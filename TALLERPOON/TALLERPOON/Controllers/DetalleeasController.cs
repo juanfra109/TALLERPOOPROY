@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
 using TALLERPOON.Dto;
+using System.Globalization;
+
 
 
 namespace TALLERPOON.Controllers
@@ -67,7 +69,7 @@ namespace TALLERPOON.Controllers
                 Detalleea detalleeanu = new Detalleea();
                 detalleeanu.IdDetalleEa = DetalleEA.IdDetalleEa;
                 detalleeanu.IdEmpl = DetalleEA.IdEmpl;
-                detalleeanu.FechaDetalleEa = DetalleEA.FechaDetalleEa;
+                detalleeanu.FechaDetalleEa = DateTime.Now;
                 detalleeanu.IdAlm = DetalleEA.IdAlm;
                 _context.Add(detalleeanu);
                 await _context.SaveChangesAsync();
