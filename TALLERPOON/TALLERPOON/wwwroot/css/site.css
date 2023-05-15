@@ -14,5 +14,40 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #F8A998;
+}
+.cuadro {
+    border-radius: 50px;
+    background-color: white;
+    max-width: 4000px;
+    padding: 30px;
+}
+.espaciocua{
+    height: 135px;
+    text-align: center;
+    align-content: center;
+    padding-bottom:10px;
+}
+.nespacio {
+    height: 130px;
+    background-color: #BADFDF;
+    border-radius: 60px;
+    padding: 30px;
+}
+div.nespacio {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+}
+.botbl {
+    color: white;
+    border-radius: 10px;
+    box-shadow: 5px 3px 3px #C52623;
+}
+#titulohome {
+    text-align: center;
+    color: #D94068;
 }

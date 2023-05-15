@@ -1,8 +1,80 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<main>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container cuadro">
+    <h1 id="titulohome">Campos Entrada</h1>
+    <div class="row espaciocua">
+        <div class="col-sm nespacio">
+            <button onclick="almacen()" class="btn btn-info botbl">Almacen</button>
+        </div>
+        <div class="col-sm nespacio">
+            <button onclick="detalleap()" class="btn btn-info botbl">Detalle Almacen-Producto</button>
+        </div>
+        <div class="col-sm nespacio">
+            <button onclick="detalleea()" class="btn btn-info botbl">Detalle Empleado-Almacen</button>
+        </div>
+    </div>
+    <div class="row espaciocua">
+        <div class="col-sm nespacio">
+            <button onclick="detalleev()" class="btn btn-info botbl">Detalle Empleado-Proveedor</button>
+        </div>
+        <div class="col-sm nespacio">
+            <button onclick="detallepp()" class="btn btn-info botbl">Detalle Producto-Proveedor</button>
+        </div>
+        <div class="col-sm nespacio">
+            <button onclick="empleados()" class="btn btn-info botbl">Empleados</button>
+        </div>
+    </div>
+    <div class="row espaciocua">
+        <div class="col-sm nespacio">
+            <button onclick="productos()" class="btn btn-info botbl">Productos</button>
+        </div>
+        <div class="col-sm nespacio">
+            <button onclick="proveedores()" class="btn btn-info botbl">Proveedores</button>
+        </div>
+        <div class="col-sm nespacio">
+                <button onclick="turnos()" class="btn btn-info botbl">Turnos</button>
+        </div>
+    </div>
+        <div class="col-sm nespacio">
+            <button onclick="ventas()" class="btn btn-info botbl">Ventas</button>
+        </div>
 </div>
+</main>
+<script>
+    var link = 'https://localhost:7238/';
+    $(document).ready;
+    function almacen(){
+        location.href = link+'Almacens';
+    }
+    function detalleap(){
+        location.href = link+'Detalleaps';
+    }
+    function detalleea(){
+        location.href = link + 'Detalleeas';
+    }
+    function detalleev() {
+        location.href = link + 'Detalleevs';
+    }
+    function detallepp() {
+        location.href = link + 'Detallepps';
+    }
+    function productos() {
+        location.href = link + 'Productoes';
+    }
+    function proveedores() {
+        location.href = link + 'Proveedors';
+    }
+    function turnos() {
+        location.href = link + 'Turnoes';
+    }
+    function ventas() {
+        location.href = link + 'Ventums';
+    }
+    function empleados(){
+        location.href = link + 'Empleadoes';
+    }
+
+</script>

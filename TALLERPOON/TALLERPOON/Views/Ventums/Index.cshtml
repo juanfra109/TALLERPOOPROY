@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -37,11 +37,19 @@
                     @Html.DisplayFor(modelItem => item.IdEmplNavigation.NomEmpl)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdVent">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdVent">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdVent">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.IdVent" class="btn btn-primary">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdVent" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<button onclick="inicio()" type="button" class="btn btn-light">Inicio</button>
+
+<script>
+    var link = 'https://localhost:7238';
+    $(document).ready;
+    function inicio() {
+        location.href = link;
+    }
+</script>
