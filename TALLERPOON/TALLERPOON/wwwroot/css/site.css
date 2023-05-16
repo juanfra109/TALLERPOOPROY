@@ -57,3 +57,8 @@ div.nespacio {
     padding: 15px;
     background-color: #960128;
 }
+.tarjeta {
+    padding: 30px;
+    border-radius: 30px;
+    background-color: #BFECB7;
+}
