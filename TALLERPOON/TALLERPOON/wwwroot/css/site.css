@@ -51,3 +51,9 @@ div.nespacio {
     text-align: center;
     color: #D94068;
 }
+.imagenprod {
+    height: 250px;
+    width: 250px;
+    padding: 15px;
+    background-color: #960128;
+}

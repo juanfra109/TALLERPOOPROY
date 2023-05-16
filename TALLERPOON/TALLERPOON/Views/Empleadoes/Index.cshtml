@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.TurnEmplNavigation.NombreTurn)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdEmpl">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdEmpl">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdEmpl">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdEmpl" class="btn btn-dark">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdEmpl" class="btn btn-primary">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdEmpl" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }
