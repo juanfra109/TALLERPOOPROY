@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
 using TALLERPOON.Dto;
+using System.Globalization;
+
 
 
 namespace TALLERPOON.Controllers
@@ -65,7 +67,7 @@ namespace TALLERPOON.Controllers
                 Ventum ventanu = new Ventum();
                 ventanu.IdVent = Venta.IdVent;
                 ventanu.TotalVent = Venta.TotalVent;
-                ventanu.FechVent = Venta.FechVent;
+                ventanu.FechVent = DateTime.Now; ;
                 ventanu.IdEmpl = Venta.IdEmpl;
                 _context.Add(ventanu);
                 await _context.SaveChangesAsync();

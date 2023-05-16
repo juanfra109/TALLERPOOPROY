@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TALLERPOON.Models.dbModels;
+using TALLERPOON.Models;
 
 namespace TALLERPOON.Controllers
 {
@@ -21,9 +22,9 @@ namespace TALLERPOON.Controllers
         // GET: Medicamento
         public async Task<IActionResult> Index()
         {
-              return _context.Productos != null ? 
-                          View(await _context.Productos.ToListAsync()) :
-                          Problem("Entity set 'ProyectofarmContext.Productos'  is null.");
+            return _context.Productos != null ?
+                        View(await _context.Productos.ToListAsync()) :
+                        Problem("Entity set 'ProyectofarmContext.Productos'  is null.");
         }
 
         // GET: Medicamento/Details/5
@@ -149,10 +150,13 @@ namespace TALLERPOON.Controllers
             {
                 _context.Productos.Remove(producto);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+       
+        
 
         private bool ProductoExists(int id)
         {

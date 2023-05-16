@@ -22,19 +22,22 @@
                 <header>
                     <h5>Precio: $@Html.DisplayFor(modelItem => item.PrecProd)</h5><br />
                 </header>
-                <a asp-action="Details" asp-route-id="@item.IdProd" class="btn btn-primary">Details</a>
                 <br />                <br />
                 <br />                <br />
                 <br />                <br />
                 <br />                <br />
                 <hr />
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Cantidad</span>
-                    <input type="number" class="form-control cantidad" min="1" data-id=@item.IdProd placeholder="1" value="1">
-                    <button class="productoag" data-id=@item.IdProd><i class="fa-solid fa-cart-shopping"></i>Agregar a Carrito</button>
-                </div>
+                <form method="get" action="Ventums/Create" name="form">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Cantidad</span>
+                        <input type="number" name="precio" hidden="hidden" value="@Html.DisplayFor(modelItem => item.PrecProd)">
+                        <input name="cantidad" type="number" class="form-control cantidad" min="1" data-id=@item.IdProd placeholder="1" value="1">
+                        <button class="productoag" data-id=@item.IdProd><i class="fa-solid fa-cart-shopping"></i>Vender</button>
+                    </div>
+                </form>
             </main>
         </div>
     </div>
 }
+
+                

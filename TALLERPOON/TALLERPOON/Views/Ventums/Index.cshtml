@@ -37,6 +37,8 @@
                     @Html.DisplayFor(modelItem => item.IdEmplNavigation.NomEmpl)
             </td>
             <td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.IdVent"><button class="btn btn-dark">Imprimir</button></a>
                     <a asp-action="Details" asp-route-id="@item.IdVent" class="btn btn-primary">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.IdVent" class="btn btn-danger">Delete</a>
             </td>
