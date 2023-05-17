@@ -4,26 +4,45 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Orden @Html.DisplayFor(model => model.IdVent)</h1>
-<h3>Atendido por: @Html.DisplayFor(model => model.IdEmplNavigation.NomEmpl)</h3>
-<h2>Venta realizada el: @Html.DisplayFor(model => model.FechVent)</h2>
-<table class="table tablasadmin">
-    <thead>
-        <tr>
-            
-            <th>Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-            <tr>
-                <td>@Html.DisplayFor(model => model.TotalVent)</td>
-                
-            </tr>
-     
-    </tbody>
-    
-</table>
+
+
+<div class="card text-dark mb-3 border-success tarjeta">
+        <article class="header">
+            <h1>Orden @Html.DisplayFor(model => model.IdVent)</h1>
+        </article>
+        <div class="card-body">
+            <main>
+                <aside>
+                <h2>Venta realizada el: @Html.DisplayFor(model => model.FechVent)</h2>
+
+                </aside>
+            <header>
+                <h3>Atendido por: @Html.DisplayFor(model => model.IdEmplNavigation.NomEmpl)</h3>
+            </header>
+            <br />                <br />
+            <hr />
+            <table class="table tablasadmin">
+                <thead>
+                    <tr>
+
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>@Html.DisplayFor(model => model.TotalVent)</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <a asp-action="Details" asp-route-id="@Model.IdVent"><button class="btn btn-dark">Imprimir</button></a>
+
+        </main>
+    </div>
+</div>
 
 <div>
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>

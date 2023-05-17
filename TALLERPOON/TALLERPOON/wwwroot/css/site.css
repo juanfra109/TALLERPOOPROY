@@ -62,3 +62,14 @@ div.nespacio {
     border-radius: 30px;
     background-color: #BFECB7;
 }
+.navbar-custom {
+    background-color: #7F34FE;
+}
+.titulo {
+    padding: 10px;
+    color: #830F4A;
+}
+.ntit {
+    background-color: #BF90EA;
+    margin: 4px;
+}

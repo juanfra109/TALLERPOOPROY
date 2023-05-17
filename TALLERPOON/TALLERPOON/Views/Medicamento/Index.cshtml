@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Medicamentos</h1>
 
 
 
@@ -27,11 +27,11 @@
                 <br />                <br />
                 <br />                <br />
                 <hr />
-                <form method="get" action="Ventums/Create" name="form">
+                <form method="get" style="width: 500px; margin:0 auto" action="Ventums/Create" name="form">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Cantidad</span>
                         <input type="number" name="precio" hidden="hidden" value="@Html.DisplayFor(modelItem => item.PrecProd)">
-                        <input name="cantidad" type="number" class="form-control cantidad" min="1" data-id=@item.IdProd placeholder="1" value="1">
+                        <input   name="cantidad" type="number" class="form-control cantidad" min="1" data-id=@item.IdProd placeholder="1" value="1">
                         <button class="productoag" data-id=@item.IdProd><i class="fa-solid fa-cart-shopping"></i>Vender</button>
                     </div>
                 </form>
