@@ -15,7 +15,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #F8A998;
+    background-color: #7b7df3;
 }
 .cuadro {
     border-radius: 50px;
@@ -31,7 +31,7 @@ body {
 }
 .nespacio {
     height: 130px;
-    background-color: #BADFDF;
+    background-color: #87e4e4;
     border-radius: 60px;
     padding: 30px;
 }
@@ -45,7 +45,7 @@ div.nespacio {
 .botbl {
     color: white;
     border-radius: 10px;
-    box-shadow: 5px 3px 3px #C52623;
+    box-shadow: 5px 3px 3px #5a21e0;
 }
 #titulohome {
     text-align: center;
@@ -66,10 +66,12 @@ div.nespacio {
     background-color: #7F34FE;
 }
 .titulo {
+    justify-content: center;
     padding: 10px;
-    color: #830F4A;
+    color: #0059ff;
 }
 .ntit {
+    justify-content: center;
     background-color: #BF90EA;
     margin: 4px;
 }
