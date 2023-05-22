@@ -19,21 +19,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomAlm)
-            </td>
-            <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdAlm" class="btn btn-dark">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdAlm" class="btn btn-primary">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdAlm" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
-}
+    <card>
+        <cardbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomAlm)
+                    </td>
+                    <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdAlm" class="btn btn-dark">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdAlm" class="btn btn-primary">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdAlm" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                }
+    
+        </cardbody>
+    </card>
     </tbody>
 </table>
-
 <button onclick="inicio()"type="button" class="btn btn-light">Inicio</button>
 
 <script>

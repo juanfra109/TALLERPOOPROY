@@ -68,10 +68,14 @@ div.nespacio {
 .titulo {
     justify-content: center;
     padding: 10px;
-    color: #0059ff;
+    color: black;
 }
 .ntit {
     justify-content: center;
     background-color: #BF90EA;
     margin: 4px;
+}
+.colorabaj{ 
+    color: black;
+
 }
