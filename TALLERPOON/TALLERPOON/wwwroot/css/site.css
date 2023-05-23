@@ -79,3 +79,44 @@ div.nespacio {
     color: black;
 
 }
+table {
+    background-color: #BEE8A2;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 3px solid red;
+}
+form {
+    background-color: #8AC09D;
+    border-radius: 40px;
+    padding: 30px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-49%, -49%);
+}
+
+.form input {
+     width: 90%;
+      height: 30px;
+      margin: 0.5rem;
+}
+
+.form button {
+      padding: 0.5em 1em;
+      border: none;
+      background: rgb(100, 200, 255);
+      cursor: pointer;
+}
+dl {
+    background-color: #E8A2DD;
+    border-radius: 30px;
+    max-width: 8000px;
+}
